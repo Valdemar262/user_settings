@@ -26,8 +26,6 @@ services:
     restart: unless-stopped
     build:
       context: php
-    ports:
-      - '9000:9000'
     volumes:
       - ./app:/var/www/app
     depends_on:
