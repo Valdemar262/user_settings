@@ -9,9 +9,10 @@ Laravel starter provides simple containerized infrastructure of `Laravel, Nginx,
 ## local deployment:
 
 ### 1) create `.env` file in `app` directory (copy or rename `.env-example`).
-### 2) Start containers through:
-#### `docker compose --env-file app/.env up -d`.
-### 3) Into app container run next command:
-#### `composer install`.
-### 4) If you want, you may to rename container group and separate containers
+### 2) If you want, you may to rename container group and separate containers
 To do this rename all using `your-project-name` into `docker-compose.yaml` file.
+### 3) Start containers through:
+#### `docker compose --env-file app/.env up -d`.
+### 4) Into app container run next command:
+#### `composer install`.
+

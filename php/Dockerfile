@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.3-fpm
 
 LABEL authors="antonmiroshnikov"
 
@@ -12,7 +12,7 @@ RUN apt update \
 
 WORKDIR /var/www/app
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
