@@ -8,11 +8,16 @@ Laravel starter provides simple containerized infrastructure of `Laravel, Nginx,
 
 ## local deployment:
 
-### 1) create `.env` file in `app` directory (copy or rename `.env-example`).
-### 2) If you want, you may to rename container group and separate containers
-To do this rename all using `your-project-name` into `docker-compose.yaml` file.
-### 3) Start containers through:
+### 1) Start containers through:
 #### `docker compose --env-file app/.env up -d`.
-### 4) Into app container run next command:
+### 2) Into app container run next command:
 #### `composer install`.
 
+## Как это работает:
+
+### 1) Пользователь отправляет POST-запрос на `/settings/update` с key, value, method.
+### SettingService сохраняет временное значение и вызывает верификацию.
+### 2) GET `/verification/methods` возвращает доступные методы (зависит от данных пользователя).
+### 3) POST `/verification/request` отправляет код через выбранный метод.
+### 4) POST `/verification/verify` проверяет код и применяет изменение настройки.
+### 5) SendVerificationCodeJob выполняется асинхронно для отправки кода.
